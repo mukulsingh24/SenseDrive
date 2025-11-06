@@ -1,5 +1,5 @@
 import { useState } from 'react'
-
+import Form from './component/form'
 function App() {
 
   return (
