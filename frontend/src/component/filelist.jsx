@@ -1,10 +1,6 @@
-import React from "react";
-
-function Formlist(){
-    const files = [
-    { id: 1, originalName: 'my-resume.pdf' },
-    { id: 2, originalName: 'project-screenshot.png' },
-  ];
+import {React,useState,useEffect} from "react";
+import axios from "axios";
+function Formlist({files}){
     return(
         <div style={{
             padding: '40px',
@@ -31,7 +27,7 @@ function Formlist(){
             }}>
                 {files.map((file, index) => (
                     <li 
-                        key={file.id}
+                        key={file._id}
                         style={{
                             display: 'flex',
                             justifyContent: 'space-between',
@@ -61,7 +57,7 @@ function Formlist(){
                             alignItems: 'center',
                             gap: '10px'
                         }}>
-                            📄 {file.originalName}
+                            📄 {file.originalname}
                         </span>
                         <button 
                             style={{

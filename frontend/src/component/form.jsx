@@ -39,7 +39,7 @@ function Form(){
                 textAlign: 'center',
                 fontWeight: '600',
                 letterSpacing: '0.5px'
-            }}>File Upload And Management Form</h1>
+            }}>File Upload Form</h1>
             
             <div style={{
                 display: 'flex',
