@@ -1,7 +1,7 @@
 // node prerequisite
 const express = require('express')
 const cors =  require('cors')
-
+require('mong.env').config();
 //security
 const fs = require('fs')
 const multer = require('multer')
