@@ -7,6 +7,7 @@ const fs = require('fs')
 const multer = require('multer');
 const { type } = require('os');
 const { error } = require('console');
+const { get } = require('http');
 
 // make sure the file gets uploaded
 const uploadDir = 'uploads/'
@@ -23,7 +24,7 @@ const fileSchema = new mongoose.Schema({
     size:Number,
     uploadDate:{type:Date,default:Date.now}
 })
-const file = mongoose.model('File',fileSchema)
+const FileModel = mongoose.model('FileModel',fileSchema)
 
 
 // storing the file
@@ -56,7 +57,7 @@ app.post('/upload' ,upload.single('file'),async(req,res) =>{
         return res.status(400).send({message:'No File Uploaded'})
     }
     try{
-    const newFile = new File({
+    const newFile = new FileModel({
         originalname:req.file.originalname,
         filename:req.file.filename,
         path:req.file.path,
@@ -70,6 +71,17 @@ app.post('/upload' ,upload.single('file'),async(req,res) =>{
 
 })
 
+
+//get the files to react
+app.get('/files',async(req,res) => {
+    try{
+    const allFiles = await FileModel.find({})
+    res.status(200).send(allFiles);}
+    catch(error){
+        console.log("Error Sending File",error)
+        res.status(500).send({ message: "Error fetching files from database" });
+    }
+})
 //server output
 app.listen(port,()=>{
     console.log(`Server Started on ${port}`)
