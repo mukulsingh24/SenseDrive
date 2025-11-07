@@ -1,16 +1,30 @@
 // node prerequisite
+require('dotenv').config({ path: './mong.env' });
 const express = require('express')
 const cors =  require('cors')
-require('dotenv').config({ path: './mong.env' });
-//security
+const mongoose = require('mongoose')
 const fs = require('fs')
-const multer = require('multer')
+const multer = require('multer');
+const { type } = require('os');
+const { error } = require('console');
 
 // make sure the file gets uploaded
 const uploadDir = 'uploads/'
 if(!fs.existsSync(uploadDir)){
     fs.mkdirSync(uploadDir)
 }
+
+
+//db schema formatori
+const fileSchema = new mongoose.Schema({
+    originalname:String,
+    filename:String,
+    path:String,
+    size:String,
+    uploadDate:{type:Date,default:Date.now}
+})
+const file = mongoose.model('File',fileSchema)
+
 
 // storing the file
 const storage = multer.diskStorage({
@@ -21,17 +35,29 @@ const storage = multer.diskStorage({
         cb(null,Date.now() + '-' + file.originalname)
     }
 })
-
 const upload = multer({storage:storage})
+
+
 //server initialization
 const app = express();
 const port = 5000;
 app.use(cors())
 
 
+mongoose.connect(process.env.MONGO_URI).then(()=>{
+    console.log("DB Succesfully Connected")
+}).catch((error)=>{
+    console.log("Error Conneting DB",error)
+    alert("Error Conneting DB")
+})
+
 // posting the file
 app.post('/upload' ,upload.single('file'),(req,res) =>{
+    if(!req.file){
+        return res.status(400).send({message:'No File Uploaded'})
+    }
     res.status(200).send({message : 'File Uploaded'})
+    
 })
 
 //server output
