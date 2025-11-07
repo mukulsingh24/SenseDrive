@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import Form from './component/form'
+import Formlist from './component/filelist'
 function App() {
 
   return (
     <div className="App">
-      <h1>This is Sample Form</h1>
+      <Form />
+      <Formlist />
     </div>
   )
 }
