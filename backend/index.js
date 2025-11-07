@@ -12,7 +12,7 @@ if(!fs.existsSync(uploadDir)){
     fs.mkdirSync(uploadDir)
 }
 
-
+// storing the file
 const storage = multer.diskStorage({
     destination:(req,file,cb) => {
         cb(null,uploadDir)
@@ -28,6 +28,8 @@ const app = express();
 const port = 5000;
 app.use(cors())
 
+
+// posting the file
 app.post('/upload' ,upload.single('file'),(req,res) =>{
     res.status(200).send({message : 'File Uploaded'})
 })
