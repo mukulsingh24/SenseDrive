@@ -20,7 +20,7 @@ const fileSchema = new mongoose.Schema({
     originalname:String,
     filename:String,
     path:String,
-    size:String,
+    size:Number,
     uploadDate:{type:Date,default:Date.now}
 })
 const file = mongoose.model('File',fileSchema)
@@ -48,16 +48,26 @@ mongoose.connect(process.env.MONGO_URI).then(()=>{
     console.log("DB Succesfully Connected")
 }).catch((error)=>{
     console.log("Error Conneting DB",error)
-    alert("Error Conneting DB")
 })
 
 // posting the file
-app.post('/upload' ,upload.single('file'),(req,res) =>{
+app.post('/upload' ,upload.single('file'),async(req,res) =>{
     if(!req.file){
         return res.status(400).send({message:'No File Uploaded'})
     }
-    res.status(200).send({message : 'File Uploaded'})
-    
+    try{
+    const newFile = new File({
+        originalname:req.file.originalname,
+        filename:req.file.filename,
+        path:req.file.path,
+        size:req.file.size
+    })
+    await newFile.save()
+    res.status(200).send({message : 'File Uploaded & saved'})}
+    catch(error){
+        console.log("Error Saving the File",error);
+    }
+
 })
 
 //server output
