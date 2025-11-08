@@ -43,7 +43,7 @@ const upload = multer({storage:storage})
 const app = express();
 const port = 5000;
 app.use(cors())
-
+app.use('/uplaods' , express.static('uploads') )
 
 mongoose.connect(process.env.MONGO_URI).then(()=>{
     console.log("DB Succesfully Connected")
@@ -88,13 +88,6 @@ app.get('/files',async(req,res) => {
     }
 })
 
-
-//viewing the files
-app.get('files',async(req,res)=>{
-    try{
-        
-    }
-})
 // deleting the files
 app.delete('/files/:id',async(req,res)=>{
     try{

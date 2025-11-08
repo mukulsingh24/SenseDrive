@@ -1,5 +1,9 @@
 import React from "react";
-function Formlist({files,handleDelete,handleview}){
+function Formlist({files,handleDelete}){
+    const handleView = (filename) =>{
+        const fileUrl = `https://fileuploader-backend-x1qt.onrender.com/uploads/${filename}`;
+        window.open(fileUrl,'_blank')
+    }
     return(
         <div style={{
             padding: '40px',
@@ -85,7 +89,7 @@ function Formlist({files,handleDelete,handleview}){
                         >
                             Delete
                         </button>
-                        <button onClick={()=> handleview(file)}
+                        <button onClick={()=>handleView(file.filename)}
                         style={{
                                 padding: '8px 16px',
                                 backgroundColor: '#ff0000ff !important',
