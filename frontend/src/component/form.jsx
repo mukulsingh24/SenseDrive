@@ -12,7 +12,7 @@ function Form({onUploadSuccess}){
         formdata.append('file',file)
 
         try{
-            await axios.post('http://localhost:5000/upload', formdata,{
+            await axios.post('https://fileuploader-backend-x1qt.onrender.com/upload', formdata, {
             headers:{
                 'Content-Type' : 'multipart/form-data'
             }})

@@ -6,7 +6,7 @@ function App() {
   const [files, setFiles] = useState([]);
   const handleDelete =  async(id) => {
         try{
-            await axios.delete(`http://localhost:5000/files/${id}`)
+            await axios.delete(`https://fileuploader-backend-x1qt.onrender.com/files/${id}`);
             fetchfile()
         }
         catch(error){
@@ -16,7 +16,7 @@ function App() {
     }
   const fetchfile = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/files');
+      const response = await axios.get('https://fileuploader-backend-x1qt.onrender.com/files');
       setFiles(response.data);
     } catch (error) {
       console.log("Error Fetching File");
