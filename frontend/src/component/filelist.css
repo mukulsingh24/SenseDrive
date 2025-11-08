@@ -1,0 +1,489 @@
+body {
+    background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%) !important;
+    min-height: 100vh;
+    background-attachment: fixed;
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideLeft {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+    50% {
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    }
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+@keyframes highlight {
+    0% {
+        background-color: transparent;
+    }
+    50% {
+        background-color: rgba(51, 51, 51, 0.05);
+    }
+    100% {
+        background-color: transparent;
+    }
+}
+
+div[style*="padding: '40px'"][style*="#ffffff"] {
+    animation: slideInDown 0.6s ease-out;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(255, 255, 255, 0.95) !important;
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.8) !important;
+}
+
+div[style*="padding: '40px'"][style*="#ffffff"]:hover {
+    box-shadow: 0 16px 56px rgba(0, 0, 0, 0.35) !important;
+    transform: translateY(-4px);
+}
+
+h2 {
+    animation: slideInDown 0.8s ease-out;
+    position: relative;
+    background: linear-gradient(135deg, #333333 0%, #666666 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transition: all 0.3s ease;
+}
+
+h2:hover {
+    transform: scale(1.02);
+    letter-spacing: 0.5px;
+}
+
+ul[style*="listStyle"] {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+li {
+    animation: fadeInUp 0.8s ease-out !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+li::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s ease;
+}
+
+li:hover::before {
+    left: 100%;
+}
+
+li:hover {
+    border-color: #d0d0d0 !important;
+    transform: translateX(4px);
+}
+
+span[style*="display: 'flex'"] {
+    animation: slideLeft 0.6s ease-out;
+    transition: all 0.3s ease;
+}
+
+li:hover span[style*="display: 'flex'"] {
+    color: #1a1a1a !important;
+}
+
+/* UPDATED DELETE BUTTON - SOLID COLOR DESIGN */
+button[style*="#ff6b6b"] {
+    animation: scaleIn 0.6s ease-out !important;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    background: #ff3838 !important;
+    visibility: visible !important;
+    display: inline-block !important;
+    z-index: 10 !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.5px !important;
+    box-shadow: 0 8px 35px rgba(255, 71, 87, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+    text-transform: uppercase !important;
+    font-size: 13px !important;
+    padding: 10px 16px !important;
+    border-radius: 6px !important;
+}
+
+button[style*="#ff6b6b"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.6s ease;
+}
+
+button[style*="#ff6b6b"]:hover::before {
+    left: 100%;
+}
+
+button[style*="#ff6b6b"]::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+button[style*="#ff6b6b"]:active::after {
+    width: 300px;
+    height: 300px;
+}
+
+/* CHANGED HOVER STATE - SOLID COLOR */
+button[style*="#ff6b6b"]:hover {
+    box-shadow: 0 12px 50px rgba(255, 71, 87, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+    transform: translateY(-6px) scale(1.12) !important;
+    background: #ff2e2e !important;
+}
+
+button[style*="#ff6b6b"]:active {
+    transform: translateY(-1px) scale(1) !important;
+    box-shadow: 0 6px 20px rgba(255, 71, 87, 0.7) !important;
+}
+
+* {
+    transition: all 0.3s ease;
+}
+
+button:focus-visible {
+    outline: 2px solid #ff6b6b;
+    outline-offset: 2px;
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+li:nth-child(odd) {
+    animation-delay: 0.1s;
+}
+
+li:nth-child(even) {
+    animation-delay: 0.2s;
+}
+
+li:nth-child(3n) {
+    animation-delay: 0.3s;
+}
+
+div[style*="padding: '40px'"][style*="#ffffff"] {
+    position: relative;
+    z-index: 1;
+    animation: pulse-glow 3s ease-in-out infinite;
+}
+
+span[style*="gap: '10px'"] {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+
+h2 {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+li {
+    border-left: 3px solid transparent !important;
+    transition: border-left-color 0.3s ease !important;
+}
+
+li:hover {
+    border-left-color: #ff3838 !important;
+}
+
+button[style*="#ff6b6b"] {
+    position: relative;
+    z-index: 2;
+}
+
+@keyframes itemIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+li {
+    animation: itemIn 0.5s ease-out forwards !important;
+}
+
+li:nth-child(1) { animation-delay: 0.05s !important; }
+li:nth-child(2) { animation-delay: 0.1s !important; }
+li:nth-child(3) { animation-delay: 0.15s !important; }
+li:nth-child(4) { animation-delay: 0.2s !important; }
+li:nth-child(5) { animation-delay: 0.25s !important; }
+
+ul[style*="listStyle"] li {
+    opacity: 0;
+}
+
+/* ============ RESPONSIVE DESIGN - DESKTOP (1024px+) ============ */
+@media (min-width: 1025px) {
+    div[style*="padding: '40px'"][style*="#ffffff"] {
+        max-width: 600px !important;
+    }
+
+    li {
+        padding: 16px !important;
+        margin-bottom: 12px !important;
+    }
+
+    button[style*="#ff6b6b"] {
+        padding: 10px 16px !important;
+        font-size: 13px !important;
+    }
+}
+
+/* ============ RESPONSIVE DESIGN - LARGE TABLET (769px - 1024px) ============ */
+@media (max-width: 1024px) {
+    div[style*="padding: '40px'"][style*="#ffffff"] {
+        padding: 35px 25px !important;
+        margin: 35px 20px !important;
+        max-width: 550px !important;
+    }
+
+    h2 {
+        font-size: 22px !important;
+        margin-bottom: 22px !important;
+    }
+
+    li {
+        padding: 15px !important;
+        margin-bottom: 11px !important;
+    }
+
+    span[style*="display: 'flex'"] {
+        font-size: 14px !important;
+    }
+
+    button[style*="#ff6b6b"] {
+        padding: 9px 15px !important;
+        font-size: 12px !important;
+    }
+}
+
+/* ============ RESPONSIVE DESIGN - TABLET (641px - 768px) ============ */
+@media (max-width: 768px) {
+    div[style*="padding: '40px'"][style*="#ffffff"] {
+        padding: 28px 20px !important;
+        margin: 20px 15px !important;
+        max-width: 100% !important;
+        border-radius: 12px !important;
+    }
+
+    h2 {
+        font-size: 20px !important;
+        margin-bottom: 18px !important;
+    }
+
+    li {
+        padding: 14px 12px !important;
+        margin-bottom: 10px !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+    }
+
+    span[style*="display: 'flex'"] {
+        width: auto !important;
+        margin-bottom: 0px !important;
+        font-size: 13px !important;
+        flex: 1 !important;
+    }
+
+    button[style*="#ff6b6b"] {
+        width: auto !important;
+        padding: 8px 12px !important;
+        font-size: 11px !important;
+        white-space: nowrap !important;
+    }
+}
+
+/* ============ RESPONSIVE DESIGN - SMALL TABLET (481px - 640px) ============ */
+@media (max-width: 640px) {
+    div[style*="padding: '40px'"][style*="#ffffff"] {
+        padding: 24px 18px !important;
+        margin: 18px 12px !important;
+        border-radius: 10px !important;
+    }
+
+    h2 {
+        font-size: 18px !important;
+        margin-bottom: 16px !important;
+    }
+
+    li {
+        padding: 12px 10px !important;
+        margin-bottom: 8px !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        border-radius: 8px !important;
+    }
+
+    span[style*="display: 'flex'"] {
+        font-size: 12px !important;
+        gap: 6px !important;
+        flex: 1 !important;
+    }
+
+    button[style*="#ff6b6b"] {
+        padding: 7px 11px !important;
+        font-size: 10px !important;
+    }
+}
+
+/* ============ RESPONSIVE DESIGN - MOBILE (361px - 480px) ============ */
+@media (max-width: 480px) {
+    div[style*="padding: '40px'"][style*="#ffffff"] {
+        padding: 20px 15px !important;
+        margin: 15px 10px !important;
+        border-radius: 8px !important;
+    }
+
+    h2 {
+        font-size: 16px !important;
+        margin-bottom: 14px !important;
+        letter-spacing: 0px !important;
+    }
+
+    li {
+        padding: 11px 10px !important;
+        margin-bottom: 8px !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        justify-content: flex-start !important;
+        gap: 8px !important;
+    }
+
+    span[style*="display: 'flex'"] {
+        width: 100% !important;
+        font-size: 12px !important;
+        gap: 8px !important;
+    }
+
+    button[style*="#ff6b6b"] {
+        width: 100% !important;
+        padding: 10px 12px !important;
+        font-size: 11px !important;
+        margin-top: 5px !important;
+    }
+
+    button[style*="#ff6b6b"]:hover {
+        transform: translateY(-3px) scale(1.05) !important;
+    }
+
+    li:hover {
+        transform: translateX(2px) !important;
+    }
+}
+
+/* ============ RESPONSIVE DESIGN - SMALL MOBILE (max 360px) ============ */
+@media (max-width: 360px) {
+    div[style*="padding: '40px'"][style*="#ffffff"] {
+        padding: 18px 12px !important;
+        margin: 12px 8px !important;
+    }
+
+    h2 {
+        font-size: 14px !important;
+        margin-bottom: 12px !important;
+    }
+
+    li {
+        padding: 10px 9px !important;
+        margin-bottom: 7px !important;
+    }
+
+    span[style*="display: 'flex'"] {
+        font-size: 11px !important;
+    }
+
+    button[style*="#ff6b6b"] {
+        padding: 8px 10px !important;
+        font-size: 10px !important;
+    }
+}

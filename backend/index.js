@@ -88,6 +88,13 @@ app.get('/files',async(req,res) => {
     }
 })
 
+
+//viewing the files
+app.get('files',async(req,res)=>{
+    try{
+        
+    }
+})
 // deleting the files
 app.delete('/files/:id',async(req,res)=>{
     try{
