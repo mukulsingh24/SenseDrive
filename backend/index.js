@@ -8,6 +8,7 @@ const multer = require('multer');
 const { type } = require('os');
 const { error } = require('console');
 const { get } = require('http');
+const { console } = require('inspector');
 
 // make sure the file gets uploaded
 const uploadDir = 'uploads/'
@@ -81,6 +82,29 @@ app.get('/files',async(req,res) => {
         console.log("Error Sending File",error)
         res.status(500).send({ message: "Error fetching files from database" });
     }
+})
+
+// deleting the files
+app.delete('/files/:id',async(req,res)=>{
+    try{
+    const fileid = req.params.id
+    const file = await FileModel.findById(fileid)
+    if(!file){
+        return res.status(404).send({message:"File Not Found"})
+    }
+    fs.unlink(file.path,async(err)=>{
+        if(err){
+            console.log("Error deleting physical File")
+        }
+        await FileModel.findByIdAndDelete(fileid)
+        res.status(200).send({message:"File Deleted Successfully"});
+    })}
+
+    catch(error){
+        console.log("Error deleting the File",error)
+        res.status(500).send({message:"Error deleting the File"})
+    }
+
 })
 //server output
 app.listen(port,()=>{
