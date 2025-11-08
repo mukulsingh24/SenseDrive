@@ -22,6 +22,17 @@ function App() {
       console.log("Error Fetching File");
     }
   };
+
+  const handleview = async()=>{
+    try{
+
+    }
+    catch(error){
+            console.log("Error" ,error)
+            alert("Error Viewing File")
+        } 
+  }
+
   useEffect(() => {
     fetchfile(); 
   }, []);

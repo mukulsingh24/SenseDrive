@@ -1,5 +1,5 @@
 import React from "react";
-function Formlist({files,handleDelete}){
+function Formlist({files,handleDelete,handleview}){
     return(
         <div style={{
             padding: '40px',
@@ -84,6 +84,33 @@ function Formlist({files,handleDelete}){
                             }}
                         >
                             Delete
+                        </button>
+                        <button onClick={()=> handleview(file)}
+                        style={{
+                                padding: '8px 16px',
+                                backgroundColor: '#ff0000ff !important',
+                                color: '#250808ff',
+                                border: 'none',
+                                borderRadius: '6px',
+                                fontSize: '13px',
+                                fontWeight: '600',
+                                cursor: 'pointer',
+                                transition: 'all 0.3s ease',
+                                boxShadow: '0 2px 8px rgba(255, 107, 107, 0.3)',
+                                whiteSpace: 'nowrap'
+                            }}
+                            onMouseEnter={(e) => {
+                                e.target.style.backgroundColor = '#ff5252';
+                                e.target.style.transform = 'translateY(-2px)';
+                                e.target.style.boxShadow = '0 4px 12px rgba(255, 107, 107, 0.4)';
+                            }}
+                            onMouseLeave={(e) => {
+                                e.target.style.backgroundColor = '#ff6b6b';
+                                e.target.style.transform = 'translateY(0)';
+                                e.target.style.boxShadow = '0 2px 8px rgba(255, 107, 107, 0.3)';
+                            }}
+                        >
+                            View
                         </button>
                     </li>
                 ))}
