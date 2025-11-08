@@ -1,6 +1,7 @@
 import {React,useState,useEffect} from "react";
 import axios from "axios";
-function Formlist({files}){
+function Formlist({files},{handleDelete}){
+    
     return(
         <div style={{
             padding: '40px',
@@ -59,7 +60,7 @@ function Formlist({files}){
                         }}>
                             📄 {file.originalname}
                         </span>
-                        <button 
+                        <button onClick={handleDelete} 
                             style={{
                                 padding: '8px 16px',
                                 backgroundColor: '#ff6b6b',

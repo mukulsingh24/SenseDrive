@@ -4,6 +4,16 @@ import Formlist from './component/filelist'
 import axios from 'axios'
 function App() {
   const [files, setFiles] = useState([]);
+  const handleDelete =  async(id) => {
+        try{
+            await axios.delete(`http://localhost:5000/files/${id}`)
+            fetchfile()
+        }
+        catch(error){
+            console.log("Error" ,error)
+            alert("Error Deleting File")
+        }
+    }
   const fetchfile = async () => {
     try {
       const response = await axios.get('http://localhost:5000/files');
@@ -18,7 +28,7 @@ function App() {
   return (
     <div className="App">
       <Form onUploadSuccess={fetchfile} />
-      <Formlist files={files} />
+      <Formlist files={files} handleDelete={handleDelete} />
     </div>
   )
 }
