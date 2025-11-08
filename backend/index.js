@@ -7,8 +7,7 @@ const fs = require('fs')
 const multer = require('multer');
 const { type } = require('os');
 const { error } = require('console');
-const { get } = require('http');
-const { console } = require('inspector');
+
 
 // make sure the file gets uploaded
 const uploadDir = 'uploads/'
@@ -50,6 +49,11 @@ mongoose.connect(process.env.MONGO_URI).then(()=>{
     console.log("DB Succesfully Connected")
 }).catch((error)=>{
     console.log("Error Conneting DB",error)
+})
+
+
+app.get('/',(req,res)=>{
+    res.send({message:'Server is Runnig'})
 })
 
 // posting the file

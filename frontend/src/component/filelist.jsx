@@ -1,6 +1,5 @@
 import {React,useState,useEffect} from "react";
 import axios from "axios";
-import './filelist.css';
 function Formlist({files}){
     return(
         <div style={{
@@ -63,8 +62,8 @@ function Formlist({files}){
                         <button 
                             style={{
                                 padding: '8px 16px',
-                                backgroundColor: '#ff6b6b',
-                                color: '#ffffff',
+                                backgroundColor: '#ff0000ff !important',
+                                color: '#250808ff',
                                 border: 'none',
                                 borderRadius: '6px',
                                 fontSize: '13px',
