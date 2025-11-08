@@ -1,6 +1,5 @@
-import {React,useState,useEffect} from "react";
-import axios from "axios";
-function Formlist({files}){
+import React from "react";
+function Formlist({files,handleDelete}){
     return(
         <div style={{
             padding: '40px',
@@ -59,7 +58,7 @@ function Formlist({files}){
                         }}>
                             📄 {file.originalname}
                         </span>
-                        <button 
+                        <button onClick={() => handleDelete(file._id)}
                             style={{
                                 padding: '8px 16px',
                                 backgroundColor: '#ff0000ff !important',

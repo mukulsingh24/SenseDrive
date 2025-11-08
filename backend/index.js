@@ -16,7 +16,7 @@ if(!fs.existsSync(uploadDir)){
 }
 
 
-//db schema formatori
+//db schema formation
 const fileSchema = new mongoose.Schema({
     originalname:String,
     filename:String,

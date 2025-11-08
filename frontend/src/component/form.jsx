@@ -1,7 +1,7 @@
 import {React,useState} from "react";
 import axios from 'axios';
 import './form.css';
-function Form(){
+function Form({onUploadSuccess}){
     const [file,setFile] = useState(null);
     const uploadfile= async () =>{
         if(!file){
@@ -17,7 +17,9 @@ function Form(){
                 'Content-Type' : 'multipart/form-data'
             }})
             alert("File uploaded Successfully")
-        }
+        
+        onUploadSuccess(); 
+        setFile(null);}
         catch(error){
             console.log("Error" ,error)
             alert("Error uploading File")
@@ -49,6 +51,7 @@ function Form(){
             }}>
                 <input 
                     type="file" 
+                    key={file ? file.name : 'empty'}
                     placeholder="Upload the File Here" 
                     onChange={(e) => setFile(e.target.files[0])}
                     style={{
