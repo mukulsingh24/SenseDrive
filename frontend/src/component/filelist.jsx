@@ -1,6 +1,6 @@
 import {React,useState,useEffect} from "react";
 import axios from "axios";
-function Formlist({files},{handleDelete}){
+function Formlist({files,handleDelete}){
     
     return(
         <div style={{
